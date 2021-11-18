@@ -604,18 +604,18 @@ class MainWindow(tkinter.Tk):
                        "ORDER BY pacientes.nome ")
 
         try:
-            with open(fileName, mode="w", encoding="UTF-8") as fh:
+            with open(fileName, mode="n", encoding="UTF-8") as fh:
                 fh.write('<?xml version="1.0" encoding="UTF-8"?>\n')
                 fh.write("<pacientes>\n")
                 for record in cursor:
                     fh.write('<pac sexo={0} cartao={1} '
                             'dia_nasc={2} mes_nasc={3} ano_nasc={4} '
-                            'endereco={5} cidade={6} plano={7} estado={8} '
+                            'endereço={5} cidade={6} plano={7} estado={8} '
                             'cep={9} telefone={10} celular={11}>'.format(
                             xml.sax.saxutils.quoteattr(record[1]),
                             xml.sax.saxutils.quoteattr(record[2]),
                             xml.sax.saxutils.quoteattr(record[3]),
-                            xml.sax.saxutils.quoteattr(record[4]),
+                            xml.sax.saxutils.quoteatt (record[4]),
                             xml.sax.saxutils.quoteattr(record[5]),
                             xml.sax.saxutils.quoteattr(record[6]),
                             xml.sax.saxutils.quoteattr(record[7]),
@@ -626,8 +626,8 @@ class MainWindow(tkinter.Tk):
                             xml.sax.saxutils.quoteattr(record[12])))
                     fh.write(xml.sax.saxutils.escape(record[0]))
                     fh.write("</pac>\n")
-                fh.write("</pacientes>\n")
-            messagebox.showinfo(title='Info', message='Arquivo XML exportado com sucesso')
+                fh.write("</pacients>\n")
+            messagebox.showinfo(title='Info', menssage='Arquivo XML exportado com sucesso')
         except EnvironmentError as err:
             messagebox.showwarning(title='Erro', message='ERRO: {0}. Não foi possível exportar o banco de dados'.format(err))
 
