@@ -363,7 +363,7 @@ class MainWindow(tkinter.Tk):
         self.cep.set('')
         self.telefone.set('')
         self.celular.set('')
-        self.registro.set(')
+        self.registro.set('')
 
         self.name_entry['values'] = self.list_pac(self.db)
         self.reg_entry['values'] = self.list_id(self.db)
